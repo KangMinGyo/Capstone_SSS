@@ -7,6 +7,8 @@
 
 import UIKit
 import PhotosUI //PHPicker 사용을 위한 import
+import AVKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -20,7 +22,7 @@ class ViewController: UIViewController {
     @IBAction func addImage(_ sender: UIBarButtonItem) {
         var configuration = PHPickerConfiguration()
         configuration.selectionLimit = 1 //선택할 수 있는 최대 asset 수
-        configuration.filter = .images
+        configuration.filter = .videos
         
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
@@ -34,19 +36,59 @@ extension ViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
     
-        let itemProvider = results.first?.itemProvider
+        guard let provider = results.first?.itemProvider else { return }
         
-        if let itemProvider = itemProvider,
-            itemProvider.canLoadObject(ofClass: UIImage.self) {
-            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in DispatchQueue.main.async {
-                    self.imageView.image = image as? UIImage
+        if provider.hasItemConformingToTypeIdentifier(UTType.movie.identifier) {
+            provider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { (url, err) in
+                guard let videoURL = url else { return }
+                print("resullt:", videoURL)
+                DispatchQueue.main.async {
+                    let player = AVPlayer(url: videoURL)
+                    let playerVC = AVPlayerViewController()
+                    playerVC.player = player
+                    self.present(playerVC, animated: true, completion: nil)
                 }
             }
-            
-        } else {
-            // TODO: Handle empty results or item provider not being able load UIImage
-            
         }
     }
 }
 
+//영상
+//guard
+//    let mediaType = info[UIImagePickerController.InfoKey.mediaType] as? String,
+//        mediaType == (kUTTypeMovie as String),
+//            let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL
+//            else { return }
+//
+//// 2
+//dismiss(animated: true) {
+//    //3
+//    let player = AVPlayer(url: url)
+//    let vcPlayer = AVPlayerViewController()
+//    vcPlayer.player = player
+//    self.present(vcPlayer, animated: true, completion: nil)
+//    }
+
+//extension ViewController: PHPickerViewControllerDelegate {
+//
+//    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+//        picker.dismiss(animated: true)
+//
+//        guard let provider = results.first?.itemProvider else { return }
+//
+//        if provider.hasItemConformingToTypeIdentifier(UTType.movie.identifier) {
+//            provider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { (url, err) in
+//                DispatchQueue.main.async {
+//                    if let url = url {
+//                        print("resullt:", url)
+//                        let player = AVPlayer(url: url)
+//                        let playerVC = AVPlayerViewController()
+//                        playerVC.player = player
+//                        self.present(playerVC, animated: true, completion: nil)
+//
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}

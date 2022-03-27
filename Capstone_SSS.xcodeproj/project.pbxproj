@@ -13,6 +13,8 @@
 		3D0069B927EECD17006D2504 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D0069B727EECD17006D2504 /* Main.storyboard */; };
 		3D0069BB27EECD19006D2504 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D0069BA27EECD19006D2504 /* Assets.xcassets */; };
 		3D0069BE27EECD19006D2504 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D0069BC27EECD19006D2504 /* LaunchScreen.storyboard */; };
+		3D0069C627F07352006D2504 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0069C527F07352006D2504 /* ReportViewController.swift */; };
+		3D0069C827F0784C006D2504 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0069C727F0784C006D2504 /* ReportTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		3D0069BA27EECD19006D2504 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D0069BD27EECD19006D2504 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D0069BF27EECD19006D2504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D0069C527F07352006D2504 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		3D0069C727F0784C006D2504 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				3D0069BA27EECD19006D2504 /* Assets.xcassets */,
 				3D0069BC27EECD19006D2504 /* LaunchScreen.storyboard */,
 				3D0069BF27EECD19006D2504 /* Info.plist */,
+				3D0069C527F07352006D2504 /* ReportViewController.swift */,
+				3D0069C727F0784C006D2504 /* ReportTableViewCell.swift */,
 			);
 			path = Capstone_SSS;
 			sourceTree = "<group>";
@@ -138,8 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D0069C627F07352006D2504 /* ReportViewController.swift in Sources */,
 				3D0069B627EECD17006D2504 /* ViewController.swift in Sources */,
 				3D0069B227EECD17006D2504 /* AppDelegate.swift in Sources */,
+				3D0069C827F0784C006D2504 /* ReportTableViewCell.swift in Sources */,
 				3D0069B427EECD17006D2504 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,7 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     let report = ["인명보호장구(안전모) 미착용", "초과탑승 금지", "위험한 전동킥보드 운전", "야광띠 등의 발광장치 착용(야간)", "기타"]
+    var check = [false, false, false, false, false]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return report.count
@@ -24,7 +25,25 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         let text: String = self.report[indexPath.row]
         cell.reportText.text = text
         
+        if check[indexPath.row] == true {
+            cell.checkButton.setImage(UIImage(systemName: "circle.circle"), for: .normal)
+        } else {
+            cell.checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
+        }
+        
         return cell
+    }
+    
+    //check기능
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        check = [false, false, false, false, false]
+        if check[indexPath.row] == false {
+            check[indexPath.row] = true
+        } else {
+            check[indexPath.row] = false
+        }
+        tableView.reloadData()
+        //print(check)
     }
     
     override func viewDidLoad() {

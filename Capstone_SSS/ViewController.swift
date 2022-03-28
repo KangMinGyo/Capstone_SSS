@@ -48,12 +48,18 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         if let pickedVideo = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
+            let myAsset = AVAsset(url: pickedVideo)
+            let imageGenerator = AVAssetImageGenerator(asset: myAsset)
+            let time: CMTime = CMTime(value: 600, timescale: 600)
+            guard let cgImage = try? imageGenerator.copyCGImage(at: time, actualTime: nil) else { fatalError() }
+            let uiImage = UIImage(cgImage: cgImage)
+            imageView.image = uiImage
+            
             do {
                 let data = try Data(contentsOf: pickedVideo, options: .mappedIfSafe)
             print(pickedVideo)
             print(data)
             } catch {
-                
             }
         }
     }

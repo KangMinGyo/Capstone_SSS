@@ -1,0 +1,6 @@
+framework module Pods_Capstone_SSS {
+  umbrella header "Pods-Capstone_SSS-umbrella.h"
+
+  export *
+  module * { export * }
+}

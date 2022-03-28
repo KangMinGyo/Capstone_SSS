@@ -7,6 +7,7 @@
 
 import UIKit
 import AVKit
+import Alamofire
 import AVFoundation
 import MobileCoreServices
 

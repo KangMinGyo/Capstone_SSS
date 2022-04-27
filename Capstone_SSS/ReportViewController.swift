@@ -26,9 +26,9 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
         cell.reportText.text = text
         
         if check[indexPath.row] == true {
-            cell.checkButton.setImage(UIImage(systemName: "circle.circle"), for: .normal)
+            cell.checkImage.image = UIImage(systemName: "circle.circle")
         } else {
-            cell.checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
+            cell.checkImage.image = UIImage(systemName: "circle")
         }
         
         return cell
@@ -43,7 +43,7 @@ class ReportViewController: UIViewController, UITableViewDataSource, UITableView
             check[indexPath.row] = false
         }
         tableView.reloadData()
-        //print(check)
+        print(check)
     }
     
     override func viewDidLoad() {

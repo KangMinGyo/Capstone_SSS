@@ -10,7 +10,7 @@ import UIKit
 class ReportTableViewCell: UITableViewCell {
     
     @IBOutlet weak var reportText: UILabel!
-    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var checkImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
